@@ -54,16 +54,6 @@ const Authenticate = ({history}) => {
     setHasAccount(!hasAccount);
   }
 
-  function signUp() {
-      console.log('Email: ' + email)
-      console.log('Password: ' + password)
-  }
-
-  function submitForm(){
-    console.log('Email: ' + email)
-    console.log('Password: ' + password)
-}
-
 function handleEmailChange(e){
     setEmail(e.target.value)
 }
