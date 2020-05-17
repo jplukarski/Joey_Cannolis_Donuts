@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 
-export default function Login() {
+export default function Donuts() {
     return(
         <>
-            Login
+            Donuts
         </>
     )
 }
