@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './App.css';
 import {
     BrowserRouter as Router,
     Switch,
@@ -10,6 +11,7 @@ import Cart from './pages/Cart'
 import Donuts from './pages/Donuts'
 import Success from './pages/Success'
 import Failure from './pages/Failure'
+import Cannolis from './pages/Cannolis'
 import Navbar from './components/Navbar'
 import {AuthProvider} from './Auth';
 
@@ -26,6 +28,8 @@ export default function App(){
                     <Route exact path='/cart/success' component={Success}/>
                     <Route exact path='/cart/failure' component={Failure}/>
                     <Route exact path='/donuts' component={Donuts}/>
+                    <Route exact path='/cannolis' component={Cannolis}/>
+
                 </Switch>
             </Router>
         </AuthProvider>

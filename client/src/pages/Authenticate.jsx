@@ -1,8 +1,7 @@
-import React, {useState, useEffect, useCallback} from 'react'
-import {withRouter, Redirect} from 'react-router';
+import React, {useState, useCallback} from 'react'
+import {withRouter} from 'react-router';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -27,7 +26,7 @@ const Authenticate = ({history}) => {
         history.push("/");
       } catch (error) {
           console.log(error)
-          if(error.code == "auth/email-already-in-use"){ 
+          if(error.code === "auth/email-already-in-use"){ 
               setEmailTaken(true)
             }
       }

@@ -5,28 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import DonutCard from '../components/DonutCards'
 
-const donutData = [
-    {
-        image: "https://www.errenskitchen.com/wp-content/uploads/2016/02/Chocolate-Glazed-Doughnuts-feature-500x480.jpg",
-        title: "Glazed Chocolate Donut",
-        price: "0.99",
-        unit: "per donut"
-    },
-    {
-        image: "https://i0.wp.com/www.thesugarpixie.net/wp-content/uploads/2015/02/SourCream_OldFashioned2-e1423685370680.jpg?resize=700%2C466&ssl=1",
-        title: "Sour Cream Old-Fashioned",
-        price: "1.24",
-        unit: "per donut"
-    },
-    {
-        image: "https://www.keyingredient.com/media/4b/6f/e7afaf064fccaaf66fbcc33568295e579b05.jpg/rh/baked-strawberry-donuts.jpg",
-        title: "Double Strawberry",
-        price: "0.89",
-        unit: "per donut"
-    }
-]
-
-const cannoliData =[
+const bestCannoliData = [
     {
         image: "https://www.grandmotherskitchen.org/uploads/3427/thumbnails/recipe.jpg",
         title: "Joey Cannoli's Classic Cannoli",
@@ -47,30 +26,51 @@ const cannoliData =[
     }
 ]
 
-export default function Home() {
+const otherCannoliData = [
+    {
+        image: "https://cdn.shopify.com/s/files/1/2404/1979/products/cannoli_close_uprs_1024x1024@2x.jpg?v=1571399033",
+        title: "Cherry Cannoli",
+        price: "20",
+        unit: "per dozen cannolis"
+    },
+    {
+        image: "https://4.bp.blogspot.com/-F5JJtgs_I7c/Vjy5K4TPDVI/AAAAAAAAAJ0/zE1MMZlaIsc/s1600/Cannolis%2B1.jpg",
+        title: "Vegan Gluten Free cannolis",
+        price: "30",
+        unit: "per dozen cannolis"
+    },
+    {
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRtXvb_q4taA9jtbvwWVALxhZQfIpbf5R3H5VViiZMg7Qd7dFC5&usqp=CAU",
+        title: "Double Chocolate cannolis",
+        price: "20",
+        unit: "per dozen cannolis"
+    },
+]
+
+export default function Donuts() {
     return(
         <>
             <Container>
                 <Row>
                     <Col sm={12}>
-                        <Jumbotron style={{textAlign: "center"}}><h1>Welcome to Joey Cannoli's Donuts!!</h1></Jumbotron>
+                        <Jumbotron style={{textAlign: "center"}}><h1>View all of our Classic cannolis!</h1></Jumbotron>
                     </Col>
                 </Row>
                 <Row>
-                    <h1>Our Most Popular Donuts</h1>
+                    <h1>Our Most Popular Cannolis</h1>
                 </Row>
                 <Row className="justify-content-between">
-                    {donutData.map(donut => 
+                    {bestCannoliData.map(donut => 
                     <Col>
                         <DonutCard image={donut.image} title={donut.title} price={donut.price} unit={donut.unit}/>
                     </Col>    
                     )}
                 </Row>
                 <Row>
-                    <h1>Our Most Popular Cannolis</h1>
+                    <h1>The rest of our selection!</h1>
                 </Row>
                 <Row className="justify-content-between">
-                    {cannoliData.map(donut => 
+                    {otherCannoliData.map(donut => 
                     <Col>
                         <DonutCard image={donut.image} title={donut.title} price={donut.price} unit={donut.unit}/>
                     </Col>    
