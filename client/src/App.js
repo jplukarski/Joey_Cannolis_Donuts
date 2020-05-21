@@ -12,27 +12,31 @@ import Donuts from './pages/Donuts'
 import Success from './pages/Success'
 import Failure from './pages/Failure'
 import Cannolis from './pages/Cannolis'
-import Navbar from './components/Navbar'
+import Header from './components/Navbar'
 import {AuthProvider} from './Auth';
+import {CartProvider} from './Cart';
+import Footer from './components/Footer'
 
 export default function App(){
     return(
         <>
-        <AuthProvider>
-            <Navbar />
-            <Router>
-                <Switch>
-                    <Route exact path='/' component={Home}/>
-                    <Route exact path='/authenticate' component={Authenticate}/>
-                    <Route exact path='/cart' component={Cart}/>
-                    <Route exact path='/cart/success' component={Success}/>
-                    <Route exact path='/cart/failure' component={Failure}/>
-                    <Route exact path='/donuts' component={Donuts}/>
-                    <Route exact path='/cannolis' component={Cannolis}/>
-
-                </Switch>
-            </Router>
-        </AuthProvider>
+            <CartProvider>
+                <AuthProvider>
+                    <Header />
+                    <Router>
+                        <Switch>
+                            <Route exact path='/' component={Home}/>
+                            <Route exact path='/authenticate' component={Authenticate}/>
+                            <Route exact path='/cart' component={Cart}/>
+                            <Route exact path='/cart/success' component={Success}/>
+                            <Route exact path='/cart/failure' component={Failure}/>
+                            <Route exact path='/donuts' component={Donuts}/>
+                            <Route exact path='/cannolis' component={Cannolis}/>
+                        </Switch>
+                    </Router>
+                    <Footer/>
+                </AuthProvider>
+            </CartProvider>
         </>
     )
 }

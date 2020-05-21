@@ -61,7 +61,7 @@ export default function Donuts() {
                 </Row>
                 <Row className="justify-content-between">
                     {bestDonutData.map(donut => 
-                    <Col>
+                    <Col key={donut.title}>
                         <DonutCard image={donut.image} title={donut.title} price={donut.price} unit={donut.unit}/>
                     </Col>    
                     )}
@@ -71,7 +71,7 @@ export default function Donuts() {
                 </Row>
                 <Row className="justify-content-between">
                     {otherDonutData.map(donut => 
-                    <Col>
+                    <Col key={donut.title}>
                         <DonutCard image={donut.image} title={donut.title} price={donut.price} unit={donut.unit}/>
                     </Col>    
                     )}
