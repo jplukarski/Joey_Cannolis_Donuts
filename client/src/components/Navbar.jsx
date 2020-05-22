@@ -22,7 +22,7 @@ export default function Menubar() {
                     </Nav>
                     <Nav>
                         {!currentUser ? <Nav.Link href="/authenticate">Register / Login</Nav.Link> : <Nav.Link onClick={() => app.auth().signOut()}> Sign Out</Nav.Link>}
-                        <Nav.Link href="/cart">Cart {CartState.cart.length === 1 ? "(Empty)" : `(${CartState.cart.length})`}</Nav.Link>
+                        <Nav.Link href="/cart">Cart (Empty)</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

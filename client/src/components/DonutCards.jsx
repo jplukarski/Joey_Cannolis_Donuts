@@ -13,19 +13,24 @@ export default function DonutCard(props) {
 
     const handleClose = () => {
         setShow(false)
-        setNumberOfItems(0)
         setTotal(0)
     };
     const handleShow = () => setShow(true);
-    const handleSelect = (event) => {setNumberOfItems(event)}
+    const handleSelect = (event) => {setNumberOfItems(parseInt(event))}
 
     useEffect(()=>{
         setTotal(Math.round((numberOfItems * props.price)*100) / 100 )
     },[numberOfItems, props.price])
 
     const addToCart = () => {
+        const bag = {
+            image: props.image,
+            title:props.title,
+            price:total,
+            count:numberOfItems
+        }
         console.log('dope')
-        CartState.setCart(bag => [...CartState.cart, bag])
+        CartState.setCart(bag)
         handleClose()
     }
     
@@ -68,7 +73,7 @@ export default function DonutCard(props) {
                     Total : ${total}
                 </Modal.Body>
                 <Modal.Footer>
-                    {numberOfItems === 0 ? '' : <Button variant="success" onClick={addToCart()}>Add to cart</Button>}
+                    {numberOfItems === 0 ? '' : <Button variant="success" onClick={() => addToCart()}>Add to cart</Button>}
                     <Button variant="danger" onClick={handleClose}>
                         Cancel
                     </Button>
