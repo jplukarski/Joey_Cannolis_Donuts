@@ -15,13 +15,22 @@ import Cannolis from './pages/Cannolis'
 import Header from './components/Navbar'
 import {AuthProvider} from './Auth';
 import {CartProvider} from './Cart';
-import Footer from './components/Footer'
+// import Footer from './components/Footer'
+
+// import app from './base.js'
+
+// app.firestore().collection('cart').add({
+//     image:"my butt",
+//     title:"my hairy butt",
+//     price:1000000,
+//     count:1
+// })
 
 export default function App(){
     return(
         <>
-            <CartProvider>
-                <AuthProvider>
+            <AuthProvider>
+                <CartProvider>
                     <Header />
                     <Router>
                         <Switch>
@@ -34,9 +43,9 @@ export default function App(){
                             <Route exact path='/cannolis' component={Cannolis}/>
                         </Switch>
                     </Router>
-                    <Footer/>
-                </AuthProvider>
-            </CartProvider>
+                    {/* <Footer/> */}
+                </CartProvider>
+            </AuthProvider>
         </>
     )
 }

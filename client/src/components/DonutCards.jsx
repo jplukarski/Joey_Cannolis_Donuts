@@ -3,13 +3,16 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Dropdown from 'react-bootstrap/Dropdown'
-import {CartContext} from '../Cart'
+// import {CartContext} from '../Cart'
+import app from '../base'
+import { AuthContext } from "../Auth";  
 
-export default function DonutCard(props) {
+export default function DonutCard(props) { 
     const [show, setShow] = useState(false);
     const [numberOfItems, setNumberOfItems] = useState(0)
     const [total, setTotal] = useState(0)
-    const { CartState } = useContext(CartContext);
+    // const { CartState } = useContext(CartContext);
+    const { currentUser } = useContext(AuthContext);
 
     const handleClose = () => {
         setShow(false)
@@ -29,8 +32,20 @@ export default function DonutCard(props) {
             price:total,
             count:numberOfItems
         }
-        console.log('dope')
-        CartState.setCart(bag)
+        if(currentUser){
+            app
+                .firestore()
+                .collection(currentUser.uid)
+                .add(bag)
+                .then((res) => console.log(res.id))
+        } else {
+            app
+            .firestore()
+            .collection(localStorage.getItem("sessionID"))
+            .add(bag)
+            .then((res) => console.log(res.id))
+        }
+
         handleClose()
     }
     
