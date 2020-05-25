@@ -11,8 +11,6 @@ export default function Menubar() {
 
     return(
         <>
-            {console.log(CartState.cart)}
-            {!currentUser ? console.log('loading...') : console.log(currentUser.uid)}
             <Navbar bg="dark" expand="lg" variant="dark">
                 <Navbar.Brand href="/">Joey Cannoli's Donuts</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,8 +20,8 @@ export default function Menubar() {
                         <Nav.Link href="/cannolis">Cannolis</Nav.Link>
                     </Nav>
                     <Nav>
-                        {!currentUser ? <Nav.Link href="/authenticate">Register / Login</Nav.Link> : <Nav.Link onClick={() => app.auth().signOut()}> Sign Out</Nav.Link>}
-    <Nav.Link href="/cart">Cart ({CartState.cart.length}){console.log(CartState.cart)}</Nav.Link>
+                        {!currentUser ? <Nav.Link href="/authenticate">Register / Login</Nav.Link> : <Nav.Link onClick={() => app.auth().signOut()}>Hello, {currentUser.email} | Sign Out</Nav.Link>}
+                        <Nav.Link href="/cart">Cart ({CartState.cart.length})</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

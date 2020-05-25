@@ -17,15 +17,6 @@ import {AuthProvider} from './Auth';
 import {CartProvider} from './Cart';
 // import Footer from './components/Footer'
 
-// import app from './base.js'
-
-// app.firestore().collection('cart').add({
-//     image:"my butt",
-//     title:"my hairy butt",
-//     price:1000000,
-//     count:1
-// })
-
 export default function App(){
     return(
         <>

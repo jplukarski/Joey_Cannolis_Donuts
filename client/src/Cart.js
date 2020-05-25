@@ -17,7 +17,7 @@ export const CartProvider = ({children}) => {
     const { currentUser } = useContext(AuthContext);
 
     if(!localStorage.getItem('sessionID')){
-        localStorage.setItem("sessionID",Math.floor((Math.random() * 100000) + 1))
+        localStorage.setItem("sessionID", Math.floor((Math.random() * 100000) + 1))
     }
 
     useEffect(() => {
