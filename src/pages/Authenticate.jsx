@@ -17,13 +17,15 @@ const Authenticate = ({history}) => {
 
   const handleSignUp = useCallback(async event => {
       event.preventDefault();
-      console.log(email)
-      console.log(password)
       try {
           await app
             .auth()
-            .createUserWithEmailAndPassword(email, password);
-        history.push("/");
+            .createUserWithEmailAndPassword(email, password)
+            .then((result) => {
+                // console.log(result.user.uid, result.user.email)
+                createBraintreeUser(result.user.uid, result.user.email)
+            })
+        // history.push("/");
       } catch (error) {
           console.log(error)
           if(error.code === "auth/email-already-in-use"){ 
@@ -31,6 +33,30 @@ const Authenticate = ({history}) => {
             }
       }
   }, [history, email, password]);
+
+  const createBraintreeUser = (id, email) => {
+    fetch('https://payments.sandbox.braintree-api.com/graphql', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'aDJrcmdqeDNxajd0c3A2dzplMmU3MzUyMGRhMDQzNTQ3ZDM4NWM4Y2ZhNjkxNmJkOQ==',
+            'Braintree-Version': '2020-06-24',
+            'Content-Type': 'application/json',
+        },
+        body: `{"query":"mutation CreateCustomer($input: CreateCustomerInput!){createCustomer(input: $input){customer {id email legacyId}}}","variables":{"input":{"customer":{"email":"${email}"}}}}`
+    })
+        .then(res => res.json())
+        .then(result => {
+            // setClientToken(result.data.createClientToken.clientToken)
+            console.log(result)
+            app
+            .firestore()
+            .collection('braintree_ids')
+            // .add(id)
+            .doc(id)
+            .set({bt_id:result.data.createCustomer.customer.id})
+        })
+        .then(() => history.push("/"))
+  }
 
   const handleLogin = useCallback(
       async event => {

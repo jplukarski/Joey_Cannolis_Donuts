@@ -5,14 +5,7 @@ import app from './base.js'
 export const CartContext = React.createContext();
 
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([
-        // {
-        //     "image":"",
-        //     "title":"",
-        //     "price":0,
-        //     "count":0
-        // }
-    ]);
+    const [cart, setCart] = useState([]);
     const CartState = { cart, setCart}
     const { currentUser } = useContext(AuthContext);
 

@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import app from '../base'
 import { AuthContext } from "../Auth";  
 
-export default function DonutCard(props) { 
+export default function DonutCard(props ) { 
     const [show, setShow] = useState(false);
     const [numberOfItems, setNumberOfItems] = useState(0)
     const [total, setTotal] = useState(0)
