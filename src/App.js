@@ -24,7 +24,8 @@ export default function App(){
             <AuthProvider>
                 <CartProvider>
                     <Header />
-                    <Router>
+                    <div>Hmmmm</div>
+		    <Router>
                         <Switch>
                             <Route exact path='/' component={Home}/>
                             <Route exact path='/authenticate' component={Authenticate}/>
